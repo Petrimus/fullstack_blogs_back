@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Petrin kootut tarinat", 
+  "author": "Petri Palmu",
+  "url": "petttrri.home.fi"  
+}
