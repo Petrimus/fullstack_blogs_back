@@ -2,7 +2,8 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Petrin kootut tarinat", 
-  "author": "Petri Palmu",
-  "url": "petttrri.home.fi"  
+  "title": "Learning React", 
+  "author": "Thomas Edison",
+  "url": "edison.home.fi",
+  "userId": "5d07455fb0f88104d82d2cf0"
 }

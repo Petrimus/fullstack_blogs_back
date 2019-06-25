@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhbG11cGUiLCJpZCI6IjVkMDc0NTVmYjBmODgxMDRkODJkMmNmMCIsImlhdCI6MTU2MDkyODMyNH0.Jeljp-atQQD5nRunJhu3QG6VLEC2ifB286IhlV5Aing
+
+{
+  "title": "Authorization with token", 
+  "author": "Matti Luukkainen",
+  "url": "luukkainen.home.fi"  
+}
