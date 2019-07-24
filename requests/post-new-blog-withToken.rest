@@ -1,9 +1,10 @@
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhbG11cGUiLCJpZCI6IjVkMDc0NTVmYjBmODgxMDRkODJkMmNmMCIsImlhdCI6MTU2MDkyODMyNH0.Jeljp-atQQD5nRunJhu3QG6VLEC2ifB286IhlV5Aing
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhbG11YWEiLCJpZCI6IjVkMWM1MzIwY2U2MDQwMGNmYzI2ZjJmMCIsImlhdCI6MTU2MjEzNzQ3NH0.Hjj3ftX8bj0QhndkonY9SucsDlaNCA7mXMd5bD6JaDA
+
 
 {
-  "title": "Authorization with token", 
-  "author": "Matti Luukkainen",
-  "url": "luukkainen.home.fi"  
+  "title": "Aarotus added a blog", 
+  "author": "Kimmo Runsala",
+  "url": "runsalasites.home.fi"  
 }

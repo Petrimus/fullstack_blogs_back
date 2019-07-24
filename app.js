@@ -9,6 +9,7 @@ const morgan = require('morgan')
 const middleware = require('./utils/middleware')
 const mongoose = require('mongoose')
 const logger = require('./utils/logger')
+const cors = require('cors')
 
 
 logger.info('connecting to ', config.MONGODB_URI)
@@ -24,6 +25,7 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true })
 app.use(bodyParser.json())
 app.use(morgan('tiny'))
 app.use(middleware.tokenExtractor)
+app.use(cors())
 
 app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
