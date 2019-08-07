@@ -7,7 +7,11 @@
     "start": "cross-env NODE_ENV=production node index.js",
     "watch": "cross-env NODE_ENV=development nodemon index.js",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build:ui": "rm -rf build && cd ../../osat-0-1-2-6-7/osa7/insightful-blogs && npm run build && cp -r build ../../../osa4/bloglist_backend/",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",    
+    "logs:prod": "heroku logs --tail"
   },
   "author": "Petri Palmu",
   "license": "MIT",

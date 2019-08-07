@@ -1,6 +1,7 @@
 const blogsRouter = require('express').Router()
 const BlogModel = require('../models/blog')
 const UserModel = require('../models/user')
+const CommentModel = require('../models/comment')
 const jwt = require('jsonwebtoken')
 
 
@@ -8,7 +9,9 @@ blogsRouter.get('/', async (request, response) => {
   // console.log(request)
 
   const blogs = await BlogModel
-    .find({}).populate('user', { username: 1, name: 1 })
+    .find({})
+    .populate('user', { username: 1, name: 1 })
+    .populate('comments', { content: 1 })
 
   response.json(blogs.map(blog => blog.toJSON()))
 })
@@ -24,18 +27,6 @@ blogsRouter.get('/:id', async (request, response, next) => {
   } catch (exception) {
     next(exception)
   }
-
-  /*
-    BlogModel.findById(request.params.id)
-      .then(blog => {
-        if (blog) {
-          response.json(blog.toJSON())
-        } else {
-          response.status(404).end()
-        }
-      })
-      .catch(error => next(error))
-      */
 })
 
 blogsRouter.post('/', async (request, response, next) => {
@@ -71,16 +62,6 @@ blogsRouter.post('/', async (request, response, next) => {
   }
 })
 
-/*
-  blogModel.save()
-    .then(savedBlog => savedBlog.toJSON())
-    .then(savedAndFormattedBlog => {
-      response.status(201).json(savedAndFormattedBlog)
-    })
-    .catch(error => next(error))
-})
-*/
-
 blogsRouter.delete('/:id', async (request, response, next) => {
 
   try {
@@ -104,14 +85,6 @@ blogsRouter.delete('/:id', async (request, response, next) => {
   } catch (exception) {
     next(exception)
   }
-
-  /*
-    BlogModel.findByIdAndRemove(request.params.id)
-      .then(() => {
-        response.status(204).end()
-      })
-      .catch(error => next(error))
-      */
 })
 
 blogsRouter.put('/:id', async (request, response, next) => {
@@ -129,15 +102,31 @@ blogsRouter.put('/:id', async (request, response, next) => {
     response.json(savedUpdatedBlog.toJSON())
   } catch (exception) {
     next(exception)
+  }  
+})
+
+blogsRouter.post('/:id/comments', async (request, response, next) => {
+const body = request.body
+
+if (body.content === undefined) {
+  return response.status(400).json({ error: 'content missing' })
+}
+
+try {
+  const blog = await BlogModel.findById(request.params.id)
+  
+  const commentModel = new CommentModel({
+    content: body.content    
+  })
+
+  const savedComment = await commentModel.save()
+    blog.comments = blog.comments.concat(savedComment._id)
+    await blog.save()
+    const savedAndFormattedComment = savedComment.toJSON()
+    response.status(201).json(savedAndFormattedComment)
+  } catch (exception) {
+    next(exception)
   }
-  /*
-  BlogModel
-    .findByIdAndUpdate(request.params.id, blogToChange, { new: true })
-    .then(updatedBlog => {
-      response.json(updatedBlog.toJSON())
-    })
-    .catch(error => next(error))
-    */
 })
 
 module.exports = blogsRouter

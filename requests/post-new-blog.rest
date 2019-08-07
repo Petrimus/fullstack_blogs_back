@@ -2,8 +2,8 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Learning React", 
-  "author": "Thomas Edison",
-  "url": "edison.home.fi",
+  "title": "Java 8 Stream Tutorial", 
+  "author": "Benjamin Winterberg",
+  "url": "https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/",
   "userId": "5d07455fb0f88104d82d2cf0"
 }
