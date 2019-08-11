@@ -1,4 +1,4 @@
-<h2>MInsightful blogs</h2>
+<h2>Insightful blogs</h2>
 
 A web server with Node Js. Frontend is done with React and is served as a static content by the server. Application uses MongoDb Atlas to store data.
 
