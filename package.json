@@ -7,10 +7,11 @@
     "start": "cross-env NODE_ENV=production node index.js",
     "watch": "cross-env NODE_ENV=development nodemon index.js",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "start:test": "cross-env NODE_ENV=test node index.js",
     "lint": "eslint .",
     "build:ui": "rm -rf build && cd ../../osat-0-1-2-6-7/osa7/insightful-blogs && npm run build && cp -r build ../../../osa4/bloglist_backend/",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail"
   },
   "author": "Petri Palmu",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
+    "cypress": "^3.4.1",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.13.0",
     "jest": "^24.8.0",
